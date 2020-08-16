@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Consumindo API</title>
+  </head>
+
+  <body>
+    <main></main>
+  </body>
+
+  <script>
+
+    async function getContent() {
+      try {
+        const response = await fetch('http://localhost:3333/');
+        const data = await response.json();
+
+        show(data);
+      } catch(err) {
+        console.log(`Ocorreu um error inesperado: ${err}`);
+      }
+
+    }
+
+    getContent();
+
+    function show(users) {
+      let output = '';
+
+      // users.map(user => {
+      //   return output += `<li>${user.name}</li>`
+      // })
+      
+      for (let user of users) {
+        output += `<li>${user.name}</li>`
+        // "+=" vai concatenar a li com o output, colocar dentro da variavel output.
+      }
+
+      document.querySelector('main').innerHTML = output;
+    }
+
+
+  </script>
+</html>
